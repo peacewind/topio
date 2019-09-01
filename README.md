@@ -1,6 +1,6 @@
 # topio
-该程序使用eBPFF/bcc工具，持续监测io延迟。
-用法类似于top指令，如-n表示显示次数，-d刷新显示的间隔。示例如下：
+该程序使用eBPFF/bcc工具，持续监测io延迟。\
+用法类似于top指令，如-n表示显示次数，-d刷新显示的间隔。示例如下：\
 
 lee@ubuntu:~$ sudo python io.py -h
 usage: io.py [-h] [-D] [-Q] [-F] [-m] [-u] [-d] [-n]
