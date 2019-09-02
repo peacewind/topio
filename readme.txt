@@ -8,6 +8,10 @@ A：（当脏页占系统内存的比例超过/proc/sys/vm/dirty_background_rati
 该程序使用eBPFF/bcc工具，持续监测io延迟。
 用法类似于top指令，如-n表示显示次数，-d刷新显示的间隔。示例如下：
 
+环境：
+lee@ubuntu:~/ebpf_exporter$ uname -a
+Linux ubuntu 5.0.0-23-generic #24~18.04.1-Ubuntu SMP Sat Aug 31 16:12:28 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
+
 lee@ubuntu:~$ sudo python io.py -h
 usage: io.py [-h] [-D] [-Q] [-F] [-m] [-u] [-d] [-n]
 
