@@ -1,7 +1,8 @@
 topio
 
 Q：考虑“当系统脏页比例到达 dirty_ratio 后，对每个执行 IO 请求的线程带来的延迟影响是怎样的”
-A：（当脏页占系统内存的比例超过/proc/sys/vm/dirty_background_ratio 的时候，write系统调用会唤醒pdflush回写脏页,直到脏页比例低于/proc/sys/vm/dirty_background_ratio，但write系统调用不会被阻塞，立即返回）
+A：（当脏页占系统内存的比例超过/proc/sys/vm/dirty_background_ratio 的时候，write系统调用会唤醒pdflush回写脏页,直到脏页比例低于
+/proc/sys/vm/dirty_background_ratio，但write系统调用不会被阻塞，立即返回）
 若脏页比例超过 dirty_ratio （/proc/sys/vm/dirty_ratio）后，系统主动回写脏页，且write被阻塞，直到脏页比例低于dirty_ratio.
 
 该程序使用eBPFF/bcc工具，持续监测io延迟。
@@ -36,7 +37,7 @@ Tracing block device I/O... Hit Ctrl-C to end.
 lee@ubuntu:~$ sudo python io.py
 09:04:38
 IO count : 37 //含义：IO数量37
-(us) :	<64(2%)	<256(8%)	<512(10%)	<32768(54%)	<65536(100%)	//含义：IO延迟统计：2%的IO延迟低于64us，8%的IO延迟低于256us，依次类推...
+(us) :	<64(2%)	<256(8%)	<512(10%)	<32768(54%)	<65536(100%)	//含义：2%的IO延迟低于64us，8%的IO延迟低于256us，依次类推...
      latency(us)         : count     distribution
          0 -> 1          : 0        |                                        |
          2 -> 3          : 0        |                                        |
@@ -82,7 +83,9 @@ IO count : 37  // IO数量
 
 
 上面仅是控制台显示，可用ebpf_exporter使显示更人性化图形化
-（可惜，弄了半天，一直报错“ Error attaching exporter: failed to attach to program "topio": failed to attach kprobes: failed to attach probe "blk_start_request" to "trace_req_start": failed to attach BPF kprobe: no such file or directory”，还没fix）
+（可惜，弄了半天，一直报错“ Error attaching exporter: failed to attach to program "topio": failed to attach kprobes:
+failed to attach probe "blk_start_request" to "trace_req_start": failed to attach BPF kprobe: no such file or directory”，
+还没fix）
 
  参考：
  ebpf/bcc https://www.iovisor.org/technology/ebpf
