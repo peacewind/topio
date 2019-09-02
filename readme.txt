@@ -88,5 +88,7 @@ failed to attach probe "blk_start_request" to "trace_req_start": failed to attac
 还没fix）
 
  参考：
- ebpf/bcc https://www.iovisor.org/technology/ebpf
- ebpf_exporter显示 https://github.com/cloudflare/ebpf_exporter
+ ebpf/bcc - https://www.iovisor.org/technology/ebpf
+ ebpf_exporter显示 - https://github.com/cloudflare/ebpf_exporter
+ 35C3 - Kernel Tracing With eBPF - YouTube https://www.youtube.com/watch?v=2lbtr85Yrs4
+ Linux 核心設計：透過 eBPF 觀察作業系統行為 (2018-11-15) - YouTube https://www.youtube.com/watch?v=UmCnh6mELwA
