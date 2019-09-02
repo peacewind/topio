@@ -65,8 +65,10 @@ int trace_req_start(struct pt_regs *ctx, struct request *req)
 // output
 int trace_req_done(struct pt_regs *ctx, struct request *req)
 {
+    //从request里可以获取很多信息，如：接收请求的磁盘信息req->rq_disk;数据长度req->__data_len 等
+    //具体参见内核源码 /include/linux/blkdev.h 中 struct request 的定义
+    
     u64 *tsp, delta;
-
     // fetch timestamp and calculate delta
     tsp = start.lookup(&req);
     if (tsp == 0) {
